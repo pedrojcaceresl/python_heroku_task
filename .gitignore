@@ -1,0 +1,6 @@
+local_settings.py
+
+*.env
+**/__pycache__/*
+
+venv

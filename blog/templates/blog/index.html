@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #008CBA;
+            color: white;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #00506b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Blogs</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th colspan="3"></th>
+        </tr>
+        {% for article in articles %}
+        <tr>
+            <td>{{article.title}}</td>
+            <td>{{article.content}}</td>
+            <td><a href="{% url 'detail' article.id %}">Detail</a></td>
+            <td><a href="{% url 'edit' article.id %}">Edit</a></td>
+            <td><a href="{% url 'delete' article.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <a href="{% url 'create' %}">New Blog</a>
+
+</body>
+
+</html>
